@@ -116,14 +116,16 @@ async function addDepartment() {
   const newDepartment = await inquirer.prompt([
     {
       name: "name",
-      message: "Please provide the name of the department",
+      message: "Please provide the name of the new department",
     },
   ]);
 
   await db.addDepartment(newDepartment);
+
   console.log("\n");
   console.log(`${newDepartment.name} has been added to the database!`);
   console.log("\n");
+
   mainMenu();
 }
 
@@ -131,9 +133,19 @@ async function addDepartment() {
 // THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
 async function addRole() {
   console.log("\n");
-  console.log("Add a role");
 
-  await db.findAllRoles();
+  const newRole = await inquirer.prompt([
+    {
+      name: "name",
+      message: "Please provide the name of the new role",
+    },
+  ]);
+
+  await db.addRole(newRole);
+
+  console.log("\n");
+  console.log(`${newRole.name} has been added to the database!`);
+  console.log("\n");
 
   mainMenu();
 }
@@ -141,12 +153,28 @@ async function addRole() {
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 async function addEmployee() {
-  console.log("\n");
-  console.log("Add an employee");
-
-  await db.findAllRoles();
-
-  mainMenu();
+  // console.log("\n");
+  // const roles = await db.findAllRoles();
+  // const employees = await db.findAllEmployees();s
+  // const newEmployee = await inquirer.prompt([
+  //   {
+  //     name: "first_name",
+  //     message: "Please provide the new employee's first name",
+  //   },
+  //   {
+  //     name: "last_name",
+  //     message: "Please provide the new employee's last name",
+  //   },
+  // ]);
+  // const roleMap = roles.map({id, Titles} => ({
+  //   name: Titles,
+  //   value: id
+  // }))
+  // await db.addRole(newRole);
+  // console.log("\n");
+  // console.log(`${newRole.name} has been added to the database!`);
+  // console.log("\n");
+  // mainMenu();
 }
 
 // WHEN I choose to update an employee role

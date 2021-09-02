@@ -65,14 +65,16 @@ function addDepartment(data) {
   return db
     .promise()
     .query("INSERT INTO department SET ?", data)
-    .then()
+    .then(([data]) => {
+      console.table(data);
+    })
     .catch();
 }
-function addRole() {
-  return console.log("this is working!");
+function addRole(data) {
+  return db.promise().query("INSERT INTO role SET ?", data).then().catch();
 }
 function addEmployee() {
-  return console.log("this is working!");
+  return db.promise().query("INSERT INTO employee SET ?", data).then().catch();
 }
 function updateRole() {
   return console.log("this is working!");
