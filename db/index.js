@@ -11,13 +11,32 @@ const mysql = require("mysql2");
 // Query to find all departments and return the values to the base index.js
 
 function findAllDepartments() {
-  return console.log("this is working!");
+  //   const conn = await pool.getConnection();
+  return db
+    .promise()
+    .query("SELECT * FROM department")
+    .then(([data]) => {
+      console.table(data);
+    })
+    .catch();
 }
 function findAllEmployees() {
-  return console.log("this is working!");
+  return db
+    .promise()
+    .query("SELECT * FROM employee")
+    .then(([data]) => {
+      console.table(data);
+    })
+    .catch();
 }
 function findAllRoles() {
-  return console.log("this is working!");
+  return db
+    .promise()
+    .query("SELECT * FROM role")
+    .then(([data]) => {
+      console.table(data);
+    })
+    .catch();
 }
 function addDepartment() {
   return console.log("this is working!");

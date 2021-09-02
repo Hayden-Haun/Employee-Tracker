@@ -8,13 +8,11 @@ const db = require("./db");
 
 //  WHEN I start the application
 //  THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-
 async function mainMenu() {
   const { mainMenuAction } = await inquirer.prompt([
     {
       name: "mainMenuAction",
       type: "list",
-
       message: "Please choose an action below",
       choices: [
         {
@@ -83,8 +81,6 @@ async function viewDepartments() {
 
   await db.findAllDepartments();
 
-  console.log("\n");
-
   mainMenu();
 }
 
@@ -96,8 +92,6 @@ async function viewRoles() {
 
   await db.findAllRoles();
 
-  console.log("\n");
-
   mainMenu();
 }
 // WHEN I choose to view all employees
@@ -107,8 +101,6 @@ async function viewEmployees() {
   console.log("ALL EMPLOYEES:");
 
   await db.findAllEmployees();
-
-  console.log("\n");
 
   mainMenu();
 }
@@ -121,8 +113,6 @@ async function addDepartment() {
 
   await db.addDepartment();
 
-  console.log("\n");
-
   mainMenu();
 }
 
@@ -133,8 +123,6 @@ async function addRole() {
   console.log("Add a role");
 
   await db.findAllRoles();
-
-  console.log("\n");
 
   mainMenu();
 }
@@ -147,8 +135,6 @@ async function addEmployee() {
 
   await db.findAllRoles();
 
-  console.log("\n");
-
   mainMenu();
 }
 
@@ -159,8 +145,6 @@ async function updateRole() {
   console.log("Update an employee role");
 
   await db.findAllRoles();
-
-  console.log("\n");
 
   mainMenu();
 }
