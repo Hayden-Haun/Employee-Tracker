@@ -180,10 +180,50 @@ async function addEmployee() {
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 async function updateRole() {
-  console.log("\n");
-  console.log("Update an employee role");
+  // const employees = await db.findAllEmployees();
 
-  await db.findAllRoles();
+  // const employeeChoices = employees.map(({ id, First, Last }) => ({
+  //   name: `${First} ${Last}`,
+  //   value: id,
+  // }));
+
+  // const { employeeId } = await prompt([
+  //   {
+  //     type: "list",
+  //     name: "employeeId",
+  //     message: "Which employee's role do you want to update?",
+  //     choices: employeeChoices,
+  //   },
+  // ]);
+
+  // const roles = await db.findAllRoles();
+
+  // const roleChoices = roles.map(({ id, Titles }) => ({
+  //   name: Titles,
+  //   value: id,
+  // }));
+
+  // const { roleId } = await prompt([
+  //   {
+  //     type: "list",
+  //     name: "roleId",
+  //     message: "Which role do you want to assign the selected employee?",
+  //     choices: roleChoices,
+  //   },
+  // ]);
+
+  // await db.updateRole(employeeId, roleId);
+
+  // console.log("Updated employee's role");
+
+  // loadMainPrompts();
+
+  // const employees = await db.findAllEmployees();
+  // const employee
+  // console.log("\n");
+  // console.log("Update an employee role");
+
+  // await db.findAllRoles();
 
   mainMenu();
 }
