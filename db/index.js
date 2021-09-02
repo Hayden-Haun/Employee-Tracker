@@ -2,7 +2,7 @@
 
 // Bring in required modules
 const cTable = require("console.table");
-// const connection = require("./connection");
+const db = require("./connection");
 const mysql = require("mysql2");
 
 // WHEN I choose to view all departments
