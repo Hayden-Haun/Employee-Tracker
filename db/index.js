@@ -14,7 +14,7 @@ function findAllDepartments() {
   //   const conn = await pool.getConnection();
   return db
     .promise()
-    .query("SELECT * FROM department")
+    .query("SELECT id, name AS Departments FROM department ORDER BY id")
     .then(([data]) => {
       console.table(data);
     })
@@ -32,7 +32,7 @@ function findAllEmployees() {
 function findAllRoles() {
   return db
     .promise()
-    .query("SELECT * FROM role")
+    .query("SELECT id, title as Titles, salary AS Salary FROM role ORDER BY id")
     .then(([data]) => {
       console.table(data);
     })
