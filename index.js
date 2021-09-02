@@ -75,6 +75,8 @@ async function mainMenu() {
 
 mainMenu();
 
+// WHEN I choose to view all departments
+// THEN I am presented with a formatted table showing department names and department ids
 async function viewDepartments() {
   console.log("\n");
   console.log("ALL DEPARTMENTS");
