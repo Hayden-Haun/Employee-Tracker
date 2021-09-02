@@ -17,35 +17,35 @@ async function mainMenu() {
       choices: [
         {
           value: "View all departments",
-          name: "view_departments",
+          name: "View all departments",
         },
         {
           value: "View all roles",
-          name: "view_roles",
+          name: "View all roles",
         },
         {
           value: "View all employees",
-          name: "view_employees",
+          name: "View all employees",
         },
         {
           value: "Add a department",
-          name: "add_department",
+          name: "Add a department",
         },
         {
           value: "Add a role",
-          name: "add_role",
+          name: "Add a role",
         },
         {
           value: "Add an employee",
-          name: "add_employee",
+          name: "Add an employee",
         },
         {
           value: "Update an employee role",
-          name: "update_role",
+          name: "Update an employee role",
         },
         {
           value: "QUIT application",
-          name: "quit",
+          name: "QUIT",
         },
       ],
     },
@@ -78,6 +78,7 @@ mainMenu();
 async function viewDepartments() {
   console.log("\n");
   console.log("ALL DEPARTMENTS");
+  console.log("\n");
 
   await db.findAllDepartments();
 
@@ -89,6 +90,7 @@ async function viewDepartments() {
 async function viewRoles() {
   console.log("\n");
   console.log("ALL ROLES");
+  console.log("\n");
 
   await db.findAllRoles();
 
@@ -99,6 +101,7 @@ async function viewRoles() {
 async function viewEmployees() {
   console.log("\n");
   console.log("ALL EMPLOYEES:");
+  console.log("\n");
 
   await db.findAllEmployees();
 
@@ -109,10 +112,18 @@ async function viewEmployees() {
 // THEN I am prompted to enter the name of the department and that department is added to the database
 async function addDepartment() {
   console.log("\n");
-  console.log("Add a Department");
 
-  await db.addDepartment();
+  const newDepartment = await inquirer.prompt([
+    {
+      name: "name",
+      message: "Please provide the name of the department",
+    },
+  ]);
 
+  await db.addDepartment(newDepartment);
+  console.log("\n");
+  console.log(`${newDepartment.name} has been added to the database!`);
+  console.log("\n");
   mainMenu();
 }
 

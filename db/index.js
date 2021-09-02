@@ -34,9 +34,11 @@ function findAllEmployees() {
 
       roleX.title AS Title, 
       roleX.salary AS Salary, 
-      CONCAT(managerX.first_name, " ",managerX.last_name) AS Manager 
 
-      departmentX.name AS Department, 
+      CONCAT(managerX.first_name, " ",managerX.last_name) AS Manager,
+
+      departmentX.name AS Department
+
       FROM employee employeeX
 
       LEFT JOIN role roleX ON employeeX.role_id = roleX.id
@@ -59,8 +61,12 @@ function findAllRoles() {
     })
     .catch();
 }
-function addDepartment() {
-  return console.log("this is working!");
+function addDepartment(data) {
+  return db
+    .promise()
+    .query("INSERT INTO department SET ?", data)
+    .then()
+    .catch();
 }
 function addRole() {
   return console.log("this is working!");
