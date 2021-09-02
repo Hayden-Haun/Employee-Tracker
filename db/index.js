@@ -10,6 +10,7 @@ const mysql = require("mysql2");
 
 // Query to find all departments and return the values to the base index.js
 
+//Returns all departments
 function findAllDepartments() {
   //   const conn = await pool.getConnection();
   return db
@@ -20,6 +21,8 @@ function findAllDepartments() {
     })
     .catch();
 }
+
+//returns all employees. JOINS bring in role titles, role salaries and manager names
 function findAllEmployees() {
   return db
     .promise()
@@ -28,13 +31,14 @@ function findAllEmployees() {
       employeeX.id, 
       employeeX.first_name AS First, 
       employeeX.last_name AS Last, 
+
       roleX.title AS Title, 
-      departmentX.name AS Department, 
       roleX.salary AS Salary, 
       CONCAT(managerX.first_name, " ",managerX.last_name) AS Manager 
 
+      departmentX.name AS Department, 
       FROM employee employeeX
-      
+
       LEFT JOIN role roleX ON employeeX.role_id = roleX.id
       LEFT JOIN department departmentX ON roleX.department_id = departmentX.id
       LEFT JOIN employee managerX ON employeeX.manager_id = managerX.id
