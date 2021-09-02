@@ -23,7 +23,24 @@ function findAllDepartments() {
 function findAllEmployees() {
   return db
     .promise()
-    .query("SELECT * FROM employee")
+    .query(
+      `SELECT 
+      employeeX.id, 
+      employeeX.first_name AS First, 
+      employeeX.last_name AS Last, 
+      roleX.title AS Title, 
+      departmentX.name AS Department, 
+      roleX.salary AS Salary, 
+      CONCAT(managerX.first_name, " ",managerX.last_name) AS Manager 
+
+      FROM employee employeeX
+      
+      LEFT JOIN role roleX ON employeeX.role_id = roleX.id
+      LEFT JOIN department departmentX ON roleX.department_id = departmentX.id
+      LEFT JOIN employee managerX ON employeeX.manager_id = managerX.id
+      ORDER BY employeeX.id
+     `
+    )
     .then(([data]) => {
       console.table(data);
     })
