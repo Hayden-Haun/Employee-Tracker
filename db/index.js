@@ -70,9 +70,10 @@ function addDepartment(data) {
     })
     .catch();
 }
-function addRole(data) {
+function addNewRole(data) {
   return db.promise().query("INSERT INTO role SET ?", data).then().catch();
 }
+
 function addEmployee() {
   return db.promise().query("INSERT INTO employee SET ?", data).then().catch();
 }
@@ -89,6 +90,7 @@ module.exports = {
   findAllEmployees,
   findAllRoles,
   addDepartment,
+  addNewRole,
   addEmployee,
   updateRole,
   quit,

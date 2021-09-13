@@ -136,15 +136,23 @@ async function addRole() {
 
   const newRole = await inquirer.prompt([
     {
-      name: "name",
+      name: "title",
       message: "Please provide the name of the new role",
+    },
+    {
+      name: "salary",
+      message: "What is the yearly salary of the new employee?",
+    },
+    {
+      name: "department_id",
+      message: "Please provide a numeric value for the department ID",
     },
   ]);
 
-  await db.addRole(newRole);
+  await db.addNewRole(newRole);
 
   console.log("\n");
-  console.log(`${newRole.name} has been added to the database!`);
+  console.log(`${newRole.title} has been added to the database!`);
   console.log("\n");
 
   mainMenu();
