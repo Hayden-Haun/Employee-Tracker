@@ -161,78 +161,47 @@ async function addRole() {
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 async function addEmployee() {
-  // console.log("\n");
-  // const roles = await db.findAllRoles();
-  // const employees = await db.findAllEmployees();s
-  // const newEmployee = await inquirer.prompt([
-  //   {
-  //     name: "first_name",
-  //     message: "Please provide the new employee's first name",
-  //   },
-  //   {
-  //     name: "last_name",
-  //     message: "Please provide the new employee's last name",
-  //   },
-  // ]);
-  // const roleMap = roles.map({id, Titles} => ({
-  //   name: Titles,
-  //   value: id
-  // }))
-  // await db.addRole(newRole);
-  // console.log("\n");
-  // console.log(`${newRole.name} has been added to the database!`);
-  // console.log("\n");
-  // mainMenu();
+  console.log("\n");
+
+  const newEmployee = await inquirer.prompt([
+    {
+      name: "first_name",
+      message: "Please provide the First Name of the new employee",
+    },
+    {
+      name: "last_name",
+      message: "Please provide the Last Name of the new employee",
+    },
+    {
+      name: "role_id",
+      message: "What is the role ID of the new employee?",
+    },
+    {
+      name: "manager_id",
+      message: "What is the new employee's manager id?",
+    },
+  ]);
+
+  await db.addNewEmployee(newEmployee);
+
+  console.log("\n");
+  console.log(
+    `${newEmployee.first_name} ${newEmployee.last_name} has been added to the database!`
+  );
+  console.log("\n");
+
+  mainMenu();
 }
 
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 async function updateRole() {
-  // const employees = await db.findAllEmployees();
+  const employees = await db.findAllEmployees();
 
-  // const employeeChoices = employees.map(({ id, First, Last }) => ({
-  //   name: `${First} ${Last}`,
-  //   value: id,
-  // }));
-
-  // const { employeeId } = await prompt([
-  //   {
-  //     type: "list",
-  //     name: "employeeId",
-  //     message: "Which employee's role do you want to update?",
-  //     choices: employeeChoices,
-  //   },
-  // ]);
-
-  // const roles = await db.findAllRoles();
-
-  // const roleChoices = roles.map(({ id, Titles }) => ({
-  //   name: Titles,
-  //   value: id,
-  // }));
-
-  // const { roleId } = await prompt([
-  //   {
-  //     type: "list",
-  //     name: "roleId",
-  //     message: "Which role do you want to assign the selected employee?",
-  //     choices: roleChoices,
-  //   },
-  // ]);
-
-  // await db.updateRole(employeeId, roleId);
-
-  // console.log("Updated employee's role");
-
-  // loadMainPrompts();
-
-  // const employees = await db.findAllEmployees();
-  // const employee
-  // console.log("\n");
-  // console.log("Update an employee role");
-
-  // await db.findAllRoles();
-
+  const employeeChoices = employees.map(({ id, First, Last }) => ({
+    name: `${First} ${Last}`,
+    value: id,
+  }));
   mainMenu();
 }
 

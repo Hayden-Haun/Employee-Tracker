@@ -65,21 +65,22 @@ function addDepartment(data) {
   return db
     .promise()
     .query("INSERT INTO department SET ?", data)
-    .then(([data]) => {
-      console.table(data);
-    })
+    .then()
     .catch();
 }
+
 function addNewRole(data) {
   return db.promise().query("INSERT INTO role SET ?", data).then().catch();
 }
 
-function addEmployee() {
+function addNewEmployee(data) {
   return db.promise().query("INSERT INTO employee SET ?", data).then().catch();
 }
+
 function updateRole() {
   return console.log("this is working!");
 }
+
 //Quits application
 function quit() {
   return console.log("this is working!");
@@ -91,7 +92,7 @@ module.exports = {
   findAllRoles,
   addDepartment,
   addNewRole,
-  addEmployee,
+  addNewEmployee,
   updateRole,
   quit,
 };
