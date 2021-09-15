@@ -2,7 +2,7 @@
 
 LIVE URL: None, this is a command line application
 
-Video Walkthrough:
+Video Walkthrough: https://drive.google.com/file/d/10b3vKvQpGZws8QwpMtCZUvlkASqcEEBZ/view
 
 REPOSITORY: https://github.com/Hayden-Haun/Employee-Tracker
 
