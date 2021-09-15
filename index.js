@@ -198,10 +198,30 @@ async function addEmployee() {
 async function updateRole() {
   const employees = await db.findAllEmployees();
 
-  const employeeChoices = employees.map(({ id, First, Last }) => ({
-    name: `${First} ${Last}`,
+  const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
+    name: `${first_name} ${last_name}`,
     value: id,
   }));
+
+  const roles = await db.findAllRoles();
+  console.log(roles);
+
+  const roleChoices = roles.map(({ id, title }) => ({
+    name: title,
+    value: id,
+  }));
+
+  const { roleId } = await prompt([
+    {
+      type: "list",
+      name: "roleId",
+      message: "Which role do you want to assign the selected employee?",
+      choices: roleChoices,
+    },
+  ]);
+
+  await db.updateEmployeeRole(employeeId, roleId);
+
   mainMenu();
 }
 

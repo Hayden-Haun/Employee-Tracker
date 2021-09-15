@@ -77,8 +77,26 @@ function addNewEmployee(data) {
   return db.promise().query("INSERT INTO employee SET ?", data).then().catch();
 }
 
-function updateRole() {
-  return console.log("this is working!");
+function updateEmployeeRole() {
+  return db
+    .promise()
+    .query(
+      `
+    UPDATE employee
+    SET ?
+    WHERE ?
+    `,
+      [
+        {
+          role_id: roleId,
+        },
+        {
+          id: employeeId,
+        },
+      ]
+    )
+    .then()
+    .catch();
 }
 
 //Quits application
@@ -93,6 +111,6 @@ module.exports = {
   addDepartment,
   addNewRole,
   addNewEmployee,
-  updateRole,
+  updateEmployeeRole,
   quit,
 };
